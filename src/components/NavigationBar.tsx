@@ -17,8 +17,8 @@ export function NavigationBar() {
   const navLinks = [
     { name: "Home", href: "#hero" },
     { name: "Tentang", href: "#about" },
-    { name: "Kegiatan", href: "#" },
     { name: "Pengurus", href: "#" },
+    { name: "Kegiatan", href: "#" },
     { name: "Galeri", href: "#" },
     { name: "Kontak", href: "#" },
   ];

@@ -17,17 +17,19 @@ export function NavigationBar() {
   const navLinks = [
     { name: "Home", href: "#hero" },
     { name: "Tentang", href: "#about" },
-    { name: "Pengurus", href: "#" },
-    { name: "Kegiatan", href: "#" },
-    { name: "Galeri", href: "#" },
-    { name: "Kontak", href: "#" },
+    { name: "Pengurus", href: "#committee" },
+    { name: "Kegiatan", href: "#activity" },
+    { name: "Galeri", href: "#gallery" },
+    // { name: "Kontak", href: "#" },
   ];
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
       setIsOpen(false);
+      setTimeout(() => {
+        element.scrollIntoView({ behavior: "smooth" });
+      }, 100);
     }
   };
 

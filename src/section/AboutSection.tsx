@@ -32,7 +32,7 @@ export const AboutSection = () => {
     <>
       <section
         id="about"
-        className="max-w-6xl mx-auto min-h-screen pt-20 space-y-12"
+        className="max-w-6xl mx-auto min-h-screen pt-20 space-y-14 px-4"
       >
         <div className="flex flex-col items-center">
           <h1 className="text-4xl md:text-5xl mb-4 font-semibold">
@@ -46,7 +46,7 @@ export const AboutSection = () => {
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center mx-auto">
-          {c.map((e, i) => {
+          {c.map((e) => {
             return (
               <div className="p-4 flex flex-col items-center gap-3 rounded-lg transition hover:shadow-lg hover:-translate-y-1">
                 <div className={`${e.bgColor} p-3 rounded-full`}>{e.icon}</div>

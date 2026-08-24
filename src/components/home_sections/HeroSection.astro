@@ -1,0 +1,205 @@
+---
+import { Image } from "astro:assets";
+
+import karnaval_hut_ri_2025 from "../../assets/images/banner/karnaval_hut_ri_2025.webp";
+import lomba_17_agustus_2025 from "../../assets/images/banner/lomba_17_agustus_2025.webp";
+import mulud_2025 from "../../assets/images/banner/mulud_2025.webp";
+
+const slides = [
+  {
+    image: lomba_17_agustus_2025,
+    title: "Lomba 16 Agustus RT 08",
+    date: "16 Agustus 2026",
+  },
+  {
+    image: lomba_17_agustus_2025,
+    title: "Nobar Film Bandung Lautan Api",
+    date: "15 Agustus 2026",
+  },
+  {
+    image: mulud_2025,
+    title: "Memperingati Maulid Nabi Muhammad SAW. 2026",
+    date: "Agustus 2026",
+  },
+  {
+    image: karnaval_hut_ri_2025,
+    title: "Karnaval 17 Agustus 2025",
+    date: "17 Agustus 2025",
+  },
+  {
+    image: lomba_17_agustus_2025,
+    title: "Lomba 17 Agustus RT 08",
+    date: "17 Agustus 2025",
+  },
+  {
+    image: mulud_2025,
+    title: "Memperingati Maulid Nabi Muhammad SAW. 2025",
+    date: "September 2025",
+  },
+];
+---
+
+<section id="hero" class="relative min-h-screen w-full overflow-hidden">
+  <div id="hero-slides" class="absolute inset-0">
+    {
+      slides.map((slide, index) => (
+        <div
+          class:list={[
+            "hero-slide absolute inset-0 opacity-0 transition-opacity duration-1000",
+            { "opacity-100": index === 0 },
+          ]}
+          data-slide={index}
+        >
+          <Image
+            src={slide.image}
+            alt={slide.title}
+            class="h-full w-full object-cover"
+            loading={index === 0 ? "eager" : "lazy"}
+          />
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="absolute inset-0 bg-black/65"></div>
+
+  <div
+    class="relative z-10 grid min-h-screen grid-cols-1 gap-10 px-6 py-24 text-white sm:px-8 sm:py-28 md:grid-cols-2 md:gap-8 md:px-10 md:py-24 lg:px-12 lg:py-28"
+  >
+    <div
+      class="flex flex-col justify-end text-center md:justify-center md:text-left"
+    >
+      <p
+        class="mb-3 text-xs font-medium uppercase tracking-[0.2em] text-gray-300 sm:mb-4 sm:text-sm sm:tracking-[0.25em]"
+      >
+        Selamat Datang
+      </p>
+
+      <h1
+        class="text-3xl font-bold leading-[1.08] sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl"
+      >
+        WEBSITE RESMI
+        <br />
+        RT.08 DESA
+        <br />
+        BOJONGGENTENG
+      </h1>
+
+      <p
+        class="mt-4 max-w-2xl text-xs leading-relaxed text-gray-200 sm:mt-5 sm:text-sm md:text-sm lg:mt-6 lg:text-base"
+      >
+        Media informasi dan komunikasi warga RT 08 RW 03 Desa Bojonggenteng.
+        Temukan informasi kegiatan dan berbagai aktivitas warga di lingkungan
+        kita.
+      </p>
+    </div>
+
+    <div class="flex w-full items-end justify-end">
+      <div
+        class="w-full border-r-4 border-white pr-4 text-right sm:pr-5 md:max-w-xs lg:max-w-sm lg:pr-6"
+      >
+        <p
+          class="mb-2 text-[10px] font-semibold uppercase tracking-wider text-gray-400 sm:mb-3 sm:text-xs"
+        >
+          Kegiatan
+        </p>
+
+        <p
+          id="slide-date"
+          class="mb-1.5 text-[10px] text-gray-400 sm:mb-2 sm:text-xs"
+        >
+          {slides[0].date}
+        </p>
+
+        <h2
+          id="slide-title"
+          class="text-lg font-bold leading-tight sm:text-xl md:text-xl lg:text-2xl"
+        >
+          {slides[0].title}
+        </h2>
+
+        <div class="mt-6 flex justify-end gap-2">
+          {
+            slides.map((_, index) => (
+              <button
+                type="button"
+                aria-label={`Slide ${index + 1}`}
+                aria-current={index === 0 ? "true" : "false"}
+                data-indicator={index}
+                class:list={[
+                  "carousel-indicator h-1 transition-all rounded-full duration-300",
+                  index === 0 ? "w-4 bg-white" : "w-3 bg-white/40",
+                ]}
+              />
+            ))
+          }
+        </div>
+
+        <a
+          href="#activity"
+          class="mt-4 inline-flex items-center gap-2 border-b border-white pb-1 text-xs font-semibold transition-all hover:gap-4 sm:mt-5 sm:text-sm lg:mt-6"
+        >
+          Lihat kegiatan
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline define:vars={{ slides }}>
+  const slideElements = document.querySelectorAll(".hero-slide");
+  const indicators = document.querySelectorAll(".carousel-indicator");
+  const titleElement = document.querySelector("#slide-title");
+  const dateElement = document.querySelector("#slide-date");
+
+  let currentSlide = 0;
+  let interval;
+
+  const showSlide = (index) => {
+    currentSlide = index;
+
+    slideElements.forEach((slide, i) => {
+      slide.classList.toggle("opacity-100", i === index);
+      slide.classList.toggle("opacity-0", i !== index);
+    });
+
+    indicators.forEach((indicator, i) => {
+      indicator.classList.toggle("w-4", i === index);
+      indicator.classList.toggle("bg-white", i === index);
+
+      indicator.classList.toggle("w-3", i !== index);
+      indicator.classList.toggle("bg-white/40", i !== index);
+
+      indicator.setAttribute("aria-current", i === index ? "true" : "false");
+    });
+
+    if (titleElement) {
+      titleElement.textContent = slides[index].title;
+    }
+
+    if (dateElement) {
+      dateElement.textContent = slides[index].date;
+    }
+  };
+
+  const nextSlide = () => {
+    const next = (currentSlide + 1) % slides.length;
+    showSlide(next);
+  };
+
+  const startCarousel = () => {
+    clearInterval(interval);
+    interval = setInterval(nextSlide, 4500);
+  };
+
+  indicators.forEach((indicator, index) => {
+    indicator.addEventListener("click", () => {
+      showSlide(index);
+      startCarousel();
+    });
+  });
+
+  showSlide(0);
+  startCarousel();
+</script>

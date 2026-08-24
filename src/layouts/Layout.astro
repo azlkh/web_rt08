@@ -1,0 +1,33 @@
+---
+import "../assets/styles/global.css";
+import { Font } from "astro:assets";
+import Navbar from "../components/Navbar.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "RT 08 Bojonggenteng",
+  description = "Website resmi RT 08 Desa Bojonggenteng.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <Font cssVariable="--font-inter" />
+  </head>
+
+  <body class="font-display">
+    <Navbar />
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>

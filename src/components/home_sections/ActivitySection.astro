@@ -1,0 +1,172 @@
+---
+import { Image } from "astro:assets";
+import { ArrowUpRight, CalendarDays, Images } from "@lucide/astro";
+
+import agustus1 from "../../assets/images/hut_ri_2025/20250817_074114.webp";
+import agustus2 from "../../assets/images/hut_ri_2025/20250817_102205.webp";
+import agustus3 from "../../assets/images/hut_ri_2025/20250817_131203.webp";
+import agustus4 from "../../assets/images/hut_ri_2025/20250817_132304.webp";
+import agustus5 from "../../assets/images/hut_ri_2025/20250817_090617.webp";
+import agustus6 from "../../assets/images/hut_ri_2025/20250817_130120.webp";
+import agustus7 from "../../assets/images/hut_ri_2025/20250817_131729.webp";
+
+import mulud1 from "../../assets/images/mulud_2025/1757317491493.webp";
+import mulud2 from "../../assets/images/mulud_2025/1757317492097.webp";
+import mulud3 from "../../assets/images/mulud_2025/1757317493096.webp";
+import mulud4 from "../../assets/images/mulud_2025/1757317493660.webp";
+import mulud5 from "../../assets/images/mulud_2025/1757317495541.webp";
+import mulud6 from "../../assets/images/mulud_2025/1757317491573.webp";
+import mulud7 from "../../assets/images/mulud_2025/1757317492279.webp";
+import mulud8 from "../../assets/images/mulud_2025/1757317493211.webp";
+import mulud9 from "../../assets/images/mulud_2025/1757317494782.webp";
+
+const activities = [
+  {
+    title: "Kerja Bakti Mingguan",
+    date: "Maret 2026",
+    desc: "Kegiatan membersihkan lingkungan bersama warga untuk menjaga kebersihan dan kenyamanan lingkungan RT 08.",
+    images: [],
+  },
+  {
+    title: "Perayaan 17 Agustus",
+    date: "Agustus 2025",
+    desc: "Lomba dan berbagai acara bersama warga untuk memeriahkan Hari Kemerdekaan Republik Indonesia.",
+    images: [
+      agustus1,
+      agustus2,
+      agustus3,
+      agustus4,
+      agustus5,
+      agustus6,
+      agustus7,
+    ],
+  },
+  {
+    title: "Maulid Nabi Muhammad SAW.",
+    date: "September 2025",
+    desc: "Peringatan hari lahir Nabi Muhammad SAW melalui tausiyah, pembacaan shalawat, dan doa bersama untuk mempererat ukhuwah warga.",
+    images: [
+      mulud1,
+      mulud2,
+      mulud3,
+      mulud4,
+      mulud5,
+      mulud6,
+      mulud7,
+      mulud8,
+      mulud9,
+    ],
+  },
+];
+---
+
+<section
+  id="kegiatan"
+  class="scroll-mt-24 px-6 py-20 sm:px-8 sm:py-24 lg:px-12 lg:py-28"
+>
+  <div class="mx-auto max-w-7xl">
+    <div
+      class="grid gap-8 border-b border-gray-200 pb-12 md:grid-cols-2 md:items-end"
+    >
+      <div>
+        <p
+          class="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-gray-500"
+        >
+          Dokumentasi
+        </p>
+
+        <h2
+          class="text-3xl font-bold leading-tight text-gray-900 sm:text-4xl lg:text-5xl"
+        >
+          Kegiatan
+          <br />
+          Warga
+        </h2>
+      </div>
+
+      <div class="md:pb-1 md:pl-8">
+        <p class="max-w-xl text-sm leading-relaxed text-gray-600 sm:text-base">
+          Dokumentasi berbagai kegiatan yang dilakukan bersama warga RT 08 RW 03
+          Desa Bojonggenteng sebagai bagian dari kebersamaan dan kehidupan
+          bermasyarakat.
+        </p>
+      </div>
+    </div>
+
+    <div>
+      {
+        activities.map((item, index) => (
+          <article
+            class:list={[
+              "grid gap-8 py-12 md:grid-cols-2 md:items-center lg:gap-16 lg:py-16",
+              index !== 0 && "border-t border-gray-200",
+            ]}
+          >
+            <div
+              class:list={[
+                "overflow-hidden bg-gray-100",
+                index % 2 === 1 && "md:order-2",
+              ]}
+            >
+              {item.images.length > 0 ? (
+                <div class="group relative aspect-4/3 overflow-hidden">
+                  <Image
+                    src={item.images[0]}
+                    alt={item.title}
+                    class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
+
+                  <div class="absolute bottom-4 left-4 flex items-center gap-2 bg-black px-3 py-2 text-xs font-medium text-white">
+                    <Images size={14} stroke-width={1.5} />
+                    {item.images.length} Foto
+                  </div>
+                </div>
+              ) : (
+                <div class="flex aspect-4/3 items-center justify-center">
+                  <div class="text-center text-gray-400">
+                    <Images size={32} stroke-width={1} class="mx-auto mb-3" />
+
+                    <p class="text-sm">Dokumentasi belum tersedia</p>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div class:list={[index % 2 === 1 && "md:order-1"]}>
+              <div class="flex items-center gap-2 text-gray-500">
+                <CalendarDays size={15} stroke-width={1.5} />
+
+                <span class="text-xs font-semibold uppercase tracking-[0.15em]">
+                  {item.date}
+                </span>
+              </div>
+
+              <h3 class="mt-4 text-2xl font-bold leading-tight text-gray-900 sm:text-3xl">
+                {item.title}
+              </h3>
+
+              <p class="mt-4 max-w-xl text-sm leading-relaxed text-gray-600 sm:text-base">
+                {item.desc}
+              </p>
+
+              {item.images.length > 0 && (
+                <a
+                  href="#gallery"
+                  class="group mt-7 inline-flex items-center gap-2 border-b border-gray-900 pb-1 text-sm font-semibold text-gray-900"
+                >
+                  Lihat dokumentasi
+                  <ArrowUpRight
+                    size={16}
+                    stroke-width={1.5}
+                    class="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+                  />
+                </a>
+              )}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

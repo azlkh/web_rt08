@@ -2,3 +2,7 @@
 @theme {
   --font-display: var(--font-inter);
 }
+
+html{
+  scroll-behavior: smooth;
+}

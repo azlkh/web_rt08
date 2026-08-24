@@ -1,25 +1,27 @@
 ---
 import { Image } from "astro:assets";
 
+import lomba_hut_ri_2026 from "../../assets/images/banner/lomba_hut_ri_2026.webp";
+import nobar_film_2026 from "../../assets/images/banner/nobar_film_2026.webp";
 import karnaval_hut_ri_2025 from "../../assets/images/banner/karnaval_hut_ri_2025.webp";
 import lomba_17_agustus_2025 from "../../assets/images/banner/lomba_17_agustus_2025.webp";
 import mulud_2025 from "../../assets/images/banner/mulud_2025.webp";
 
 const slides = [
+  // {
+  //   image: mulud_2025,
+  //   title: "Memperingati Maulid Nabi Muhammad SAW",
+  //   date: "Agustus 2026",
+  // },
   {
-    image: lomba_17_agustus_2025,
-    title: "Lomba 16 Agustus RT 08",
+    image: lomba_hut_ri_2026,
+    title: "Lomba HUT RI RT 08",
     date: "16 Agustus 2026",
   },
   {
-    image: lomba_17_agustus_2025,
+    image: nobar_film_2026,
     title: "Nobar Film Bandung Lautan Api",
-    date: "15 Agustus 2026",
-  },
-  {
-    image: mulud_2025,
-    title: "Memperingati Maulid Nabi Muhammad SAW. 2026",
-    date: "Agustus 2026",
+    date: "16 Agustus 2026",
   },
   {
     image: karnaval_hut_ri_2025,
@@ -33,13 +35,13 @@ const slides = [
   },
   {
     image: mulud_2025,
-    title: "Memperingati Maulid Nabi Muhammad SAW. 2025",
+    title: "Memperingati Maulid Nabi Muhammad SAW",
     date: "September 2025",
   },
 ];
 ---
 
-<section id="hero" class="relative min-h-screen w-full overflow-hidden">
+<section id="beranda" class="relative min-h-screen w-full overflow-hidden">
   <div id="hero-slides" class="absolute inset-0">
     {
       slides.map((slide, index) => (
@@ -101,7 +103,7 @@ const slides = [
         <p
           class="mb-2 text-[10px] font-semibold uppercase tracking-wider text-gray-400 sm:mb-3 sm:text-xs"
         >
-          Kegiatan
+          Kegiatan terbaru
         </p>
 
         <p
@@ -113,7 +115,7 @@ const slides = [
 
         <h2
           id="slide-title"
-          class="text-lg font-bold leading-tight sm:text-xl md:text-xl lg:text-2xl"
+          class="text-md font-semibold leading-tight md:text-xl"
         >
           {slides[0].title}
         </h2>
@@ -136,7 +138,7 @@ const slides = [
         </div>
 
         <a
-          href="#activity"
+          href="#kegiatan"
           class="mt-4 inline-flex items-center gap-2 border-b border-white pb-1 text-xs font-semibold transition-all hover:gap-4 sm:mt-5 sm:text-sm lg:mt-6"
         >
           Lihat kegiatan

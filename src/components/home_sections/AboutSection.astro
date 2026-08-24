@@ -1,0 +1,146 @@
+---
+import { Image } from "astro:assets";
+import { Heart, Handshake, Shield } from "@lucide/astro";
+
+import aboutImage from "../../assets/images/other/1757317491573.webp";
+
+const values = [
+  {
+    label: "Gotong Royong",
+    desc: "Kegiatan rutin untuk menjaga kebersihan dan kenyamanan lingkungan.",
+    icon: Handshake,
+  },
+  {
+    label: "Kegiatan Sosial",
+    desc: "Santunan, acara warga, dan berbagai kegiatan kebersamaan.",
+    icon: Heart,
+  },
+  {
+    label: "Keamanan Lingkungan",
+    desc: "Menjaga keamanan dan ketertiban melalui kepedulian bersama.",
+    icon: Shield,
+  },
+];
+---
+
+<section
+  id="tentang"
+  class="scroll-mt-24 px-6 py-20 sm:px-8 sm:py-24 lg:px-12 lg:py-28"
+>
+  <div class="mx-auto max-w-7xl">
+    <div
+      class="grid gap-10 border-b border-gray-200 pb-16 lg:grid-cols-[1fr_1.5fr] lg:items-end"
+    >
+      <div>
+        <p
+          class="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-gray-500"
+        >
+          Tentang Kami
+        </p>
+
+        <h2
+          class="text-3xl font-bold leading-tight text-gray-900 sm:text-4xl lg:text-5xl"
+        >
+          Membangun lingkungan
+          <br class="hidden sm:block" />
+          bersama-sama.
+        </h2>
+      </div>
+
+      <div class="lg:pb-1">
+        <p
+          class="max-w-2xl text-sm leading-relaxed text-gray-600 sm:text-base lg:ml-auto"
+        >
+          RT 08 RW 03 Desa Bojonggenteng merupakan lingkungan yang aktif dalam
+          kegiatan sosial, gotong royong, dan berbagai aktivitas kemasyarakatan
+          untuk menciptakan lingkungan yang harmonis dan nyaman bagi seluruh
+          warga.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid border-b border-gray-200 md:grid-cols-3">
+      {
+        values.map((item, index) => {
+          const Icon = item.icon;
+
+          return (
+            <div
+              class:list={[
+                "py-8 md:px-7 lg:py-10",
+                index !== 0 &&
+                  "border-t border-gray-200 md:border-l md:border-t-0",
+                index === 0 && "md:pl-0",
+                index === values.length - 1 && "md:pr-0",
+              ]}
+            >
+              <div class="mb-6 flex h-11 w-11 items-center justify-center border border-gray-300">
+                <Icon size={21} stroke-width={1.5} />
+              </div>
+
+              <h3 class="text-lg font-semibold text-gray-900">{item.label}</h3>
+
+              <p class="mt-3 max-w-sm text-sm leading-relaxed text-gray-500">
+                {item.desc}
+              </p>
+            </div>
+          );
+        })
+      }
+    </div>
+
+    <div
+      class="grid gap-10 pt-16 md:grid-cols-2 md:items-center lg:gap-20 lg:pt-20"
+    >
+      <div>
+        <p
+          class="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-gray-500"
+        >
+          Visi & Misi
+        </p>
+
+        <h3 class="text-2xl font-bold leading-tight text-gray-900 sm:text-3xl">
+          Lingkungan yang harmonis,
+          <br class="hidden sm:block" />
+          aman, dan nyaman.
+        </h3>
+
+        <div class="mt-6 space-y-5">
+          <p
+            class="max-w-xl text-sm leading-relaxed text-gray-600 sm:text-base"
+          >
+            Mewujudkan lingkungan yang harmonis, aman, dan nyaman bagi seluruh
+            warga RT 08 RW 03 Desa Bojonggenteng.
+          </p>
+
+          <p
+            class="max-w-xl text-sm leading-relaxed text-gray-600 sm:text-base"
+          >
+            Meningkatkan kebersamaan melalui gotong royong, menjaga kebersihan
+            lingkungan, mendorong partisipasi dalam kegiatan sosial, serta
+            memperkuat keamanan dan ketertiban bersama.
+          </p>
+        </div>
+
+        <div class="mt-8 border-l-2 border-gray-900 pl-5">
+          <p class="text-sm font-semibold text-gray-900">
+            Bersama, kita menjaga lingkungan.
+          </p>
+
+          <p class="mt-1 text-xs text-gray-500">
+            RT 08 / RW 03 · Desa Bojonggenteng
+          </p>
+        </div>
+      </div>
+
+      <div class="md:order-last">
+        <Image
+          src={aboutImage}
+          alt="Kegiatan warga RT 08 RW 03 Desa Bojonggenteng"
+          class="h-64 w-full object-cover sm:h-80 lg:h-105"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </div>
+</section>
